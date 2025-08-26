@@ -1,7 +1,7 @@
 import logging
 import os
 from telegram import Update, ReplyKeyboardMarkup
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
+from telegram.ext import Updater, CommandHandler, ContextTypes, MessageHandler, Filters
 from sinais_gg import gg_bot
 
 # Configurar logging
@@ -59,48 +59,43 @@ https://abrir.link/jPgNp
 """
     await update.message.reply_html(info_text)
 
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     if text == '🎰 Sinal GG':
-        await sinal_command(update, context)
+        return sinal_command(update, context)
     elif text == '📊 Estatísticas':
-        await estatisticas_command(update, context)
+        return estatisticas_command(update, context)
     elif text == '🔍 Análise GG':
-        await analise_command(update, context)
+        return analise_command(update, context)
     elif text == 'ℹ️ Info GG':
-        await info_command(update, context)
+        return info_command(update, context)
 
 def main():
     try:
-        application = Application.builder().token(TOKEN).build()
+        # Usando Updater para versão 13.15
+        updater = Updater(TOKEN, use_context=True)
+        dispatcher = updater.dispatcher
         
         # Handlers
-        application.add_handler(CommandHandler("start", start))
-        application.add_handler(CommandHandler("sinal", sinal_command))
-        application.add_handler(CommandHandler("analise", analise_command))
-        application.add_handler(CommandHandler("estatisticas", estatisticas_command))
-        application.add_handler(CommandHandler("info", info_command))
-        application.add_handler(CommandHandler("gg", sinal_command))
-        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+        dispatcher.add_handler(CommandHandler("start", start))
+        dispatcher.add_handler(CommandHandler("sinal", sinal_command))
+        dispatcher.add_handler(CommandHandler("analise", analise_command))
+        dispatcher.add_handler(CommandHandler("estatisticas", estatisticas_command))
+        dispatcher.add_handler(CommandHandler("info", info_command))
+        dispatcher.add_handler(CommandHandler("gg", sinal_command))
+        dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
         
         print("💎 GG Roleta 24H - ONLINE!")
         print("🌐 Bot hospedado na nuvem")
         print("🔗 https://abrir.link/jPgNp")
         print("🤖 Aguardando comandos...")
         
-        # Configuração para hospedagem
-        port = int(os.environ.get('PORT', 5000))
-        application.run_webhook(
-            listen="0.0.0.0",
-            port=port,
-            url_path=TOKEN,
-            webhook_url=f"https://seu-app.render.com/{TOKEN}"
-        )
+        # Iniciar bot
+        updater.start_polling()
+        updater.idle()
         
     except Exception as e:
         logger.error(f"Erro: {e}")
-        # Fallback para polling
-        application.run_polling()
 
 if __name__ == "__main__":
     main()
