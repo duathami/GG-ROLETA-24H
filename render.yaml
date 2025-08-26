@@ -9,4 +9,6 @@ services:
       - key: TELEGRAM_TOKEN
         value: 8316806934:AAHWD94_BKRo25x7Ong5jE4-AaQDN8eC4JM
       - key: ADMIN_ID
-        value: 123456789
+        value: 1821438737
+
+
