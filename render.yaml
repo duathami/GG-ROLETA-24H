@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: gg-roleta-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    plan: free
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: 8316806934:AAHWD94_BKRo25x7Ong5jE4-AaQDN8eC4JM
+      - key: ADMIN_ID
+        value: 1821438737
