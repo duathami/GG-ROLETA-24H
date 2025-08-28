@@ -1,3 +1,9 @@
+# Apply patch first
+try:
+    import patch_imghdr
+except:
+    pass
+
 import os
 import logging
 from telegram import Update, ReplyKeyboardMarkup
