@@ -14,46 +14,46 @@ def start(update: Update, context: CallbackContext):
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
     
     update.message.reply_text(
-        '👋 Bem-vindo ao GG ROLETA 24H!\\n\\n'
-        '💎 Sinais Premium 24/7\\n'
+        '👋 Bem-vindo ao GG ROLETA 24H!\n\n'
+        '💎 Sinais Premium 24/7\n'
         '✅ Use os botões abaixo:',
         reply_markup=reply_markup
     )
 
 def sinal_command(update: Update, context: CallbackContext):
     update.message.reply_text(
-        '🔔 GG ROLETA - SINAL CONFIRMADO!\\n\\n'
-        '🎮 Jogo: Roleta Brasileira\\n'
-        '🎯 ENTRADA: 🔴 Vermelho\\n'
-        '💰 RETORNO: 5x\\n\\n'
-        '🔗 https://abrir.link/jPgNp\\n\\n'
+        '🔔 GG ROLETA - SINAL CONFIRMADO!\n\n'
+        '🎮 Jogo: Roleta Brasileira\n'
+        '🎯 ENTRADA: 🔴 Vermelho\n'
+        '💰 RETORNO: 5x\n\n'
+        '🔗 https://abrir.link/jPgNp\n\n'
         '⚠️ Jogue com Responsabilidade.'
     )
 
 def estatisticas_command(update: Update, context: CallbackContext):
     update.message.reply_text(
-        '📊 GG ROLETA - ESTATÍSTICAS\\n\\n'
-        '✅ Vitórias: 184\\n'
-        '❌ Derrotas: 9\\n'
-        '🎯 Taxa: 95.3%\\n\\n'
+        '📊 GG ROLETA - ESTATÍSTICAS\n\n'
+        '✅ Vitórias: 184\n'
+        '❌ Derrotas: 9\n'
+        '🎯 Taxa: 95.3%\n\n'
         '🔗 https://abrir.link/jPgNp'
     )
 
 def analise_command(update: Update, context: CallbackContext):
     update.message.reply_text(
-        '🔍 GG ROLETA - ANÁLISE\\n\\n'
-        '📈 Mercado favorável\\n'
-        '🎯 Recomendação: Entradas\\n\\n'
+        '🔍 GG ROLETA - ANÁLISE\n\n'
+        '📈 Mercado favorável\n'
+        '🎯 Recomendação: Entradas\n\n'
         '🔗 https://abrir.link/jPgNp'
     )
 
 def info_command(update: Update, context: CallbackContext):
     update.message.reply_text(
-        'ℹ️ GG ROLETA 24H - OFICIAL\\n\\n'
-        '🏆 Vantagens:\\n'
-        '• Sinais 24/7\\n'
-        '• 95.3% de acerto\\n\\n'
-        '🔗 https://abrir.link/jPgNp\\n\\n'
+        'ℹ️ GG ROLETA 24H - OFICIAL\n\n'
+        '🏆 Vantagens:\n'
+        '• Sinais 24/7\n'
+        '• 95.3% de acerto\n\n'
+        '🔗 https://abrir.link/jPgNp\n\n'
         '⚠️ Jogue com Responsabilidade.'
     )
 
