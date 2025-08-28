@@ -1,8 +1,9 @@
 services:
   - type: web
     name: gg-roleta-24h
-    env: docker
-    dockerfilePath: Dockerfile
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
     plan: free
     envVars:
       - key: TELEGRAM_TOKEN
